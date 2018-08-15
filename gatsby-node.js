@@ -39,10 +39,12 @@ let sourceNodes = exports.sourceNodes = (() => {
       // create nodes from the documents in the response
       response.hits.hits.forEach(function (hit) {
         const _id = hit._id,
-              _source = hit._source;
+              _source = hit._source,
+              _score = hit._score;
 
 
         createNode(_extends({}, _source, {
+          score: _score,
           id: _id,
           parent: null,
           children: [],
